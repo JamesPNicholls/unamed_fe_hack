@@ -1,43 +1,46 @@
 import pygame
 import sys
 
-pygame.init()
-screen = pygame.display.set_mode((800,400))
-clock = pygame.time.Clock()
+from pygame.constants import K_LEFT
 
-menu_Flag = {'menu' : True, 'game' : False, 'main' : True}
-menu_Surface = pygame.image.load('sprites/misc/menu.png')
-game_Surface = pygame.image.load('sprites/b_screen/b_background.png')
-def main_menu():
-    while menu_Flag['main']:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN:
-                game()
+from menu import CMenu
+from game import CGame
+class CMain():
+    def __init__(self) -> None:
+        # Enabling pygame  
+        pygame.init()
 
-        screen.blit(menu_Surface,(0,0))
-        pygame.display.update()
-        clock.tick(60)
+        CMain.screen = pygame.display.set_mode((700,400))
+        CMain.clock = pygame.time.Clock()
+        CMain.game_State_Flags = {    'in_Main_Menu' :  True,
+                                      'in_Game_Screen_Screen': False,
+                                      'end_Application'      : False}
 
-def game():
-    menu_Flag['game'] = True
-    while menu_Flag['game']:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+        #  Instanitating the 'subclasses'
+        CMain.C_Game = CGame(CMain.screen)
+        CMain.C_Menu = CMenu(CMain.screen)
 
-            if event.type == pygame.KEYDOWN:
-                menu_Flag['game'] = False
+    
+    def update():
+            pygame.display.update()
+            CMain.clock.tick(60)
 
-        screen.blit(game_Surface,(0,0))
-        pygame.display.update()
-        clock.tick(60)
+    def main(self):
+        # Contains all the primary game loops
+        while(not CMain.game_State_Flags['end_Application']):
 
-def draw_Cursor():
-    while menu_Flag['main']:
-        
+            while CMain.game_State_Flags['in_Main_Menu']:
+                CMain.C_Menu.menu_Event_Loop(CMain.game_State_Flags)
+                CMain.C_Menu.draw_Menu()
+                CMain.update()
 
-main_menu()
+            while CMain.game_State_Flags['in_Game_Screen']:
+                CMain.C_Game.game_Event_Loop(CMain.game_State_Flags)
+                CMain.C_Game.draw_Game()
+                CMain.update()
+
+        pygame.quit()
+        sys.exit()
+
+C_Main = CMain()
+C_Main.main()
