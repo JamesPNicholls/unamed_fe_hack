@@ -6,15 +6,16 @@ from pygame.constants import K_LEFT
 from menu import CMenu
 from game import CGame
 class CMain():
+    
     def __init__(self) -> None:
         # Enabling pygame  
         pygame.init()
 
-        CMain.screen = pygame.display.set_mode((700,400))
+        CMain.screen = pygame.display.set_mode((671,590))
         CMain.clock = pygame.time.Clock()
-        CMain.game_State_Flags = {    'in_Main_Menu' :  True,
-                                      'in_Game_Screen_Screen': False,
-                                      'end_Application'      : False}
+        CMain.game_State_Flags = {    'in_Main_Menu'          :  True,
+                                      'in_Game_Screen_Screen' : False,
+                                      'end_Application'       : False}
 
         #  Instanitating the 'subclasses'
         CMain.C_Game = CGame(CMain.screen)
@@ -27,8 +28,8 @@ class CMain():
 
     def main(self):
         # Contains all the primary game loops
-        while(not CMain.game_State_Flags['end_Application']):
 
+        while(not CMain.game_State_Flags['end_Application']):
             while CMain.game_State_Flags['in_Main_Menu']:
                 CMain.C_Menu.menu_Event_Loop(CMain.game_State_Flags)
                 CMain.C_Menu.draw_Menu()

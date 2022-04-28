@@ -17,7 +17,7 @@ class CMenu:
         return
 
     def draw_Menu(*args):
-        CMenu.screen.blit(CMenu.menu_Surface,(0,0))
+        CMenu.screen.blit(CMenu.menu_Surface,(-100,50))
 
         CMenu.screen.blit(CMenu.top_Button,(10,10))
         CMenu.screen.blit(CMenu.bot_Button,(10,200))
@@ -30,7 +30,6 @@ class CMenu:
             if event.type == pygame.QUIT:
                 game_State_Flags['end_Application']      = True
                 game_State_Flags['in_Main_Menu']  = False
-                break
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
