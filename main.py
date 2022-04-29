@@ -1,47 +1,44 @@
 import pygame
 import sys
-
-from pygame.constants import K_LEFT
-
 from menu import CMenu
-from game import CGame
-class CMain():
+from game import Cgame
+class Cmain():
     
     def __init__(self) -> None:
         # Enabling pygame  
         pygame.init()
 
-        CMain.screen = pygame.display.set_mode((671,590))
-        CMain.clock = pygame.time.Clock()
-        CMain.game_State_Flags = {    'in_Main_Menu'          :  True,
+        Cmain.screen = pygame.display.set_mode((671+55*3,564))
+        Cmain.clock = pygame.time.Clock()
+        Cmain.game_State_Flags = {    'in_Main_Menu'          :  True,
                                       'in_Game_Screen_Screen' : False,
                                       'end_Application'       : False}
 
         #  Instanitating the 'subclasses'
-        CMain.C_Game = CGame(CMain.screen)
-        CMain.C_Menu = CMenu(CMain.screen)
+        Cmain.C_Game = Cgame(Cmain.screen)
+        Cmain.C_Menu = CMenu(Cmain.screen)
 
     
     def update():
             pygame.display.update()
-            CMain.clock.tick(60)
+            Cmain.clock.tick(32)
 
     def main(self):
         # Contains all the primary game loops
 
-        while(not CMain.game_State_Flags['end_Application']):
-            while CMain.game_State_Flags['in_Main_Menu']:
-                CMain.C_Menu.menu_Event_Loop(CMain.game_State_Flags)
-                CMain.C_Menu.draw_Menu()
-                CMain.update()
+        while(not Cmain.game_State_Flags['end_Application']):
+            while Cmain.game_State_Flags['in_Main_Menu']:
+                Cmain.C_Menu.menu_Event_Loop(Cmain.game_State_Flags)
+                Cmain.C_Menu.draw_Menu()
+                Cmain.update()
 
-            while CMain.game_State_Flags['in_Game_Screen']:
-                CMain.C_Game.game_Event_Loop(CMain.game_State_Flags)
-                CMain.C_Game.draw_Game()
-                CMain.update()
+            while Cmain.game_State_Flags['in_Game_Screen']:
+                Cmain.C_Game.game_Event_Loop(Cmain.game_State_Flags)
+                Cmain.C_Game.draw_Game()
+                Cmain.update()
 
         pygame.quit()
         sys.exit()
 
-C_Main = CMain()
+C_Main = Cmain()
 C_Main.main()
