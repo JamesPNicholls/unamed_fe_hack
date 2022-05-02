@@ -1,9 +1,19 @@
-from numpy import size
+from numpy import size, multiply
 import pygame as p
+import map
+
+from sys import path
+path.insert(1,'C:/Users/retge/Documents/git_repo/unamed_fe_hack/data')
+import unit
+
+
+
+
 class Cgame:
     #mask used for color_key transparency
     cursor_mask = (156, 39, 176)
     frame_count = 0
+    grid_size = 55
         
     def __init__(self,screen):
         self.current_Level = 1
@@ -19,7 +29,7 @@ class Cgame:
             self.game_Icon[i].set_colorkey(self.cursor_mask)
         self.game_Icon_Pos = [0,0]
         return
-
+    
     def game_Event_Loop(self, game_State_Flags):
         p.key.set_repeat(50)
 
@@ -34,47 +44,44 @@ class Cgame:
             if event.type == p.KEYDOWN:
                 if event.key == p.K_DOWN:
                     
-                    if self.game_Icon_Pos[1] < 495:
-                        self.game_Icon_Pos[1] += 55
+                    if self.game_Icon_Pos[1] < 9:
+                        self.game_Icon_Pos[1] += 1
                     
                     # Checks to see if the cursor is at the edge of visible screen to scroll the map
                     # One of these for each direction
-                    if self.game_Icon_Pos[1] == 495 and self.game_Map_Pos[1] > -551:
-                        self.game_Map_Pos[1] -= 55
+                    if self.game_Icon_Pos[1] == 9 and self.game_Map_Pos[1] > -11:
+                        self.game_Map_Pos[1] -= 1
 
                 if event.key == p.K_UP:
                     # move cursor up unless at top of screen
                     if self.game_Icon_Pos[1] > 0:
-                        self.game_Icon_Pos[1] -= 55
+                        self.game_Icon_Pos[1] -= 1
 
                     if self.game_Icon_Pos[1] == 0 and self.game_Map_Pos[1] < 0:
-                        self.game_Map_Pos[1] += 55
+                        self.game_Map_Pos[1] += 1
                     
-
-                if event.key == p.K_LEFT:   
-
+                if event.key == p.K_LEFT:
                     if self.game_Icon_Pos[0] > 0 :
-                        self.game_Icon_Pos[0] -= 55
-
-
+                        self.game_Icon_Pos[0] -= 1
 
                 if event.key == p.K_RIGHT:
-                    if self.game_Icon_Pos[0] <= 550+55*3:    
-                        self.game_Icon_Pos[0] += 55
+                    if self.game_Icon_Pos[0] <= 13:    
+                        self.game_Icon_Pos[0] += 1
                     
+                if event.key == p.K_ESCAPE:
+                    game_State_Flags['in_Game_Screen'] = False
+                    game_State_Flags['in_Main_Menu'] = True
 
         print('Icon Pos: ', self.game_Icon_Pos, 'Map Pos: ', self.game_Map_Pos) # debug print
         return
 
-    def draw_Cursor():
-        # want to add the pulsing icon here 
-        return 
+    def load_units(self):
+        self.roy = unit.Cunit()
 
 
     def draw_Game(self, *args):  
         # Draw Images on screen
-        self.screen.blit( self.game_Map, self.game_Map_Pos)
-        self.screen.blit( self.game_Icon[1], self.game_Icon_Pos)
-        
+        self.screen.blit( self.game_Map, multiply(self.game_Map_Pos, self.grid_size))
+        self.screen.blit( self.game_Icon[1], multiply(self.game_Icon_Pos,self.grid_size))
         return
         

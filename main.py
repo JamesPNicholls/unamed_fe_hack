@@ -1,14 +1,16 @@
 import pygame
 import sys
-from menu import CMenu
+from menu import Cmenu
 from game import Cgame
+
+
 class Cmain():
     
     def __init__(self) -> None:
         # Enabling pygame  
         pygame.init()
 
-        Cmain.screen = pygame.display.set_mode((671+55*3,564))
+        Cmain.screen = pygame.display.set_mode((836,564))
         Cmain.clock = pygame.time.Clock()
         Cmain.game_State_Flags = {    'in_Main_Menu'          :  True,
                                       'in_Game_Screen_Screen' : False,
@@ -16,7 +18,7 @@ class Cmain():
 
         #  Instanitating the 'subclasses'
         Cmain.C_Game = Cgame(Cmain.screen)
-        Cmain.C_Menu = CMenu(Cmain.screen)
+        Cmain.C_Menu = Cmenu(Cmain.screen)
 
     
     def update():
@@ -31,6 +33,7 @@ class Cmain():
                 Cmain.C_Menu.menu_Event_Loop(Cmain.game_State_Flags)
                 Cmain.C_Menu.draw_Menu()
                 Cmain.update()
+        
 
             while Cmain.game_State_Flags['in_Game_Screen']:
                 Cmain.C_Game.game_Event_Loop(Cmain.game_State_Flags)

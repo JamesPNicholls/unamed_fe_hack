@@ -1,72 +1,39 @@
 {   "unit_stats" : [
-    {   "id" : 0,  
-        "growths" : [0,0,0,0,0,0,0,0,0,0],  
-        "bases" :   [1,	18,	5,	5,	7,    7,	5,	0,	6,	5],  
-        "weapons" : [0,0,0,0,0]
-    },
-
-    {   "id" : 1,
-        "growths" : [0,0,0,0,0,0,0,0,0,0],
-        "bases" : [1,	32,	9,	14,	11,   10,	9,	8,	11,	8],  
-        "weapons" : [0,0,0,0,0]
-    },
-    
-    {   "id" : 2,
-        "growths" : [0,0,0,0,0,0,0,0,0,0],
-        "bases" : [1,	21,	7,	4,	6,    3,	6,	0,	9,	7],  
-        "weapons" : [0,0,0,0,0]
-    },
-    
-    {   "id" : 3,
-        "growths" : [0,0,0,0,0,0,0,0,0,0],
-        "bases" : [1,	20,	5,	6,	8,    2,	6,	0,	9,	7],  
-        "weapons" : [0,0,0,0,0]
-    },
-    
-    {   "id" : 4,
-        "growths" : [0,0,0,0,0,0,0,0,0,0],
-        "bases" : [1,	18,	4,	4,	5,    2,	4,	0,	7,	5],  
-        "weapons" : [0,0,0,0,0]
-    },
-    
-    {   "id" : 5,
-        "growths" : [0,0,0,0,0,0,0,0,0,0],
-        "bases" : [1,	20,	7,	4,	3,    4,	11,	0,	14,	4],  
-        "weapons" : [0,0,0,0,0]
-    },
-    
-    {   "id" : 6,
-        "growths" : [0,0,0,0,0,0,0,0,0,0],
-        "bases" : [5,   28,	9,	5,	5,	  0,	4,	0,	11, 5],  
-        "weapons" : [0,0,0,0,0]
-    },
-    
-    {   "id" : 7,
-        "growths" : [0,0,0,0,0,0,0,0,0,0],
-        "bases" : [1,   20,	5,	2,	4,	  0,	2,	0,	11,	5],  
-        "weapons" : [0,0,0,0,0]
-    },
-    
-    {   "id" : 8,
-        "growths" : [0,0,0,0,0,0,0,0,0,0],
-        "bases" : [1,   5,	1,	5,	0,	  3,	0,	12,	5,  5],  
-        "weapons" : [0,0,0,0,0]
-    },
-    
-    {   "id" : 9,
-        "growths" : [0,0,0,0,0,0,0,0,0,0],
-        "bases" : [1,   18,	4,	3,	3,	  0,	3,	0,	7,	5],  
-        "weapons" : [0,0,0,0,0]}
+        {"id" : 0,   "growths" : [0, 80, 40, 50, 40, 60, 25, 30, 0, 0],  "bases" :  [1, 18,	5,	5,	7,    7,	5,	0,	6,	5],  "weapons" : [0,0,0,0,0]},
+        {"id" : 1,   "growths" : [0, 60, 25, 20, 25, 20, 15, 20, 0, 0],  "bases" :  [1, 32,	9,	14,	11,   10,	9,	8,	11,	8],  "weapons" : [0,0,0,0,0]},
+        {"id" : 2,   "growths" : [0, 85, 45, 40, 45, 40, 25, 10, 0, 0],  "bases" :  [1, 21,	7,	4,	6,    3,	6,	0,	9,	7],  "weapons" : [0,0,0,0,0]},
+        {"id" : 3,   "growths" : [0, 80, 40, 45, 50, 35, 20, 15, 0, 0],  "bases" :  [1, 20,	5,	6,	8,    2,	6,	0,	9,	7],  "weapons" : [0,0,0,0,0]},
+        {"id" : 4,   "growths" : [0, 80, 40, 50, 40, 40, 20, 10, 0, 0],  "bases" :  [1, 18,	4,	4,	5,    2,	4,	0,	7,	5],  "weapons" : [0,0,0,0,0]},
+        {"id" : 5,   "growths" : [0, 90, 30, 30, 40, 50, 35, 10, 0, 0],  "bases" :  [1, 20,	7,	4,	3,    4,	11,	0,	14,	4],  "weapons" : [0,0,0,0,0]},
+        {"id" : 6,   "growths" : [0,0,0,0,0,0,0,0,0,0],  "bases" :  [5, 28,	9,	5,	5,	  0,	4,	0,	11, 5],        "weapons" : [0,0,0,0,0]},
+        {"id" : 7,   "growths" : [0,0,0,0,0,0,0,0,0,0],  "bases" :  [1, 20,	5,	2,	4,	  0,	2,	0,	11,	5],        "weapons" : [0,0,0,0,0]},
+        {"id" : 8,   "growths" : [0,0,0,0,0,0,0,0,0,0],  "bases" :  [1, 5,	1,	5,	0,	  3,	0,	12,	5,  5],        "weapons" : [0,0,0,0,0]},
+        {"id" : 9,   "growths" : [0,0,0,0,0,0,0,0,0,0],  "bases" :  [1, 18,	4,	3,	3,	  0,	3,	0,	7,	5],        "weapons" : [0,0,0,0,0]}
     ],
 
 
     "weapon_stats" :[
-    {"id": 0, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0},
-    {"id": 1, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0},
-    {"id": 2, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0},
-    {"id": 3, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0},
-    {"id": 4, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0},
-    {"id": 5, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0}]
+        {"id": 0, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0},
+        {"id": 1, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0},
+        {"id": 2, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0},
+        {"id": 3, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0},
+        {"id": 4, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0},
+        {"id": 5, "rank" : 0, "range" : 0, "uses" : 0, "wt" : 0, "mt" : 0, "hit": 0, "crit" : 0, "cost" : 0}
+    ],
+
+    "tile_stats" :[
+        {"id" :  0, "name" : "dash",     "stat_bonus_def" : 0, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  1, "name" : "plains",   "stat_bonus_def" : 1, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  2, "name" : "forest",   "stat_bonus_def" : 1, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  3, "name" : "house",    "stat_bonus_def" : 0, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  4, "name" : "village",  "stat_bonus_def" : 0, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  5, "name" : "cliff",    "stat_bonus_def" : 0, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  6, "name" : "sea",      "stat_bonus_def" : 0, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  7, "name" : "ruins",    "stat_bonus_def" : 0, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  8, "name" : "mnt",      "stat_bonus_def" : 0, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  9, "name" : "peak",     "stat_bonus_def" : 0, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" : 10, "name" : "gate",     "stat_bonus_def" : 0, "stat_bonus_avd": 0, "heal_amount" : 0, "traverse_lvl" : 0 }
+    ]
 }
 
 
