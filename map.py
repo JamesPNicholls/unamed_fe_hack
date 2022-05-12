@@ -58,7 +58,7 @@ class Cmap:
                     data['tile_stats'][self.map_grid[y][x]]['stat_bonus_avd'],
                     data['tile_stats'][self.map_grid[y][x]]['heal_amount'],
                     data['tile_stats'][self.map_grid[y][x]]['traverse_lvl'])    
-
+        
 
     def print_map(self):
         for x in self.map_grid:
@@ -85,6 +85,7 @@ class Csquare(Cmap):
         ,self.heal_amount
         ,self.traverse_amt
         ,self.occupied)
-    
-map = Cmap()
-map.print_map()
+
+# Test functions  
+# map = Cmap()
+# map.print_map()

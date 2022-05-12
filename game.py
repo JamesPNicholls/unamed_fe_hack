@@ -1,13 +1,8 @@
 from numpy import size, multiply
 import pygame as p
+from pyrsistent import v
 import map
-
-from sys import path
-path.insert(1,'C:/Users/retge/Documents/git_repo/unamed_fe_hack/data')
 import unit
-
-
-
 
 class Cgame:
     #mask used for color_key transparency
@@ -22,13 +17,37 @@ class Cgame:
         self.game_Map = p.image.load('sprites/map/map_Demo.png').convert()
         self.game_Map = p.transform.scale(self.game_Map, (int(3.5*240),int(3.5*336)))    
         self.game_Map_Pos = [0,0]
+        self.game_Map_Grid = map.Cmap()
+
 
         self.game_Icon = [p.image.load('sprites/map/map_cursor_0.png').convert(), p.image.load('sprites/map/map_cursor_1.png').convert(), p.image.load('sprites/map/map_cursor_2.png').convert()]
         for i in range(size(self.game_Icon)):
             self.game_Icon[i] = p.transform.scale(self.game_Icon[i], (int(3.6*20), int(3.6*20)))
             self.game_Icon[i].set_colorkey(self.cursor_mask)
         self.game_Icon_Pos = [0,0]
-        return
+
+        # dict containing the individual units
+        self.allies = {     'u_roy'     : unit.Cunit(unit.unit_names.Roy),
+                            'u_marcus'  : unit.Cunit(unit.unit_names.Marcus),
+                            'u_alan'    : unit.Cunit(unit.unit_names.Alen),
+                            'u_lance'   : unit.Cunit(unit.unit_names.Lance),
+                            'u_wolt'    : unit.Cunit(unit.unit_names.Wolt),
+                            'u_bors'    : unit.Cunit(unit.unit_names.Bors)}
+        
+        self.enemies = {    'u_damas'       : unit.Cunit(unit.unit_names.Damas),
+                            'u_brigand_0'   : unit.Cunit(unit.unit_names.Brigand),
+                            'u_archer_0'    : unit.Cunit(unit.unit_names.Archer),
+                            'u_archer_1'    : unit.Cunit(unit.unit_names.Archer),
+                            'u_bandit_0'    : unit.Cunit(unit.unit_names.Fighter),
+                            'u_bandit_1'    : unit.Cunit(unit.unit_names.Fighter),
+                            'u_bandit_2'    : unit.Cunit(unit.unit_names.Fighter),
+                            'u_bandit_3'    : unit.Cunit(unit.unit_names.Fighter),
+                            'u_bandit_4'    : unit.Cunit(unit.unit_names.Fighter),
+                            'u_bandit_5'    : unit.Cunit(unit.unit_names.Fighter),
+                            'u_bandit_6'    : unit.Cunit(unit.unit_names.Fighter),
+                            'u_bandit_7'    : unit.Cunit(unit.unit_names.Fighter),
+                            'u_bandit_8'    : unit.Cunit(unit.unit_names.Fighter),
+                            'u_bandit_9'    : unit.Cunit(unit.unit_names.Fighter)}
     
     def game_Event_Loop(self, game_State_Flags):
         p.key.set_repeat(50)
@@ -72,7 +91,7 @@ class Cgame:
                     game_State_Flags['in_Game_Screen'] = False
                     game_State_Flags['in_Main_Menu'] = True
 
-        print('Icon Pos: ', self.game_Icon_Pos, 'Map Pos: ', self.game_Map_Pos) # debug print
+        # print('Icon Pos: ', self.game_Icon_Pos, 'Map Pos: ', self.game_Map_Pos) # debug print
         return
 
     def load_units(self):
@@ -83,5 +102,6 @@ class Cgame:
         # Draw Images on screen
         self.screen.blit( self.game_Map, multiply(self.game_Map_Pos, self.grid_size))
         self.screen.blit( self.game_Icon[1], multiply(self.game_Icon_Pos,self.grid_size))
+        
         return
         

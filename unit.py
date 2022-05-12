@@ -48,7 +48,7 @@ class Cunit:
         self.growths    = self.data['unit_stats'][unit_id]['growths']
         self.weapons    = self.data['unit_stats'][unit_id]['weapons']
         self.exp        = 0
-        self.pos        = [0,0]
+        self.pos        = self.data['unit_stats'][unit_id]['start_pos']
         return
 
     def set_pos(self, new_pos):
@@ -105,10 +105,6 @@ class Cinventory(Cunit):
         pass
 
     def lose_uses(self):
+        pass
 
-
-
-
-
-# Test functions+
-test_u = Cunit(0)
+# Test functions
