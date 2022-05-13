@@ -3,43 +3,44 @@ import random as rd
 from enum import Enum
 import weapon
 
-class unit_names(Enum):
-    # Allies
-    Roy       = 0   
-    Marcus    = 1
-    Alen      = 2
-    Lance     = 3
-    Wolt      = 4
-    Bors      = 5
-    # Enemies    
-    Fighter   = 6
-    Brigand   = 7
-    Archer    = 8
-    Damas     = 9  
+unit_id_val = {
+     # Allies
+    'Roy'       : 0,   
+    'Marcus'    : 1,
+    'Alen'      : 2,
+    'Lance'     : 3,
+    'Wolt'      : 4,
+    'Bors'      : 5,
+    # Enemies
+    'Fighter'   : 6,
+    'Brigand'   : 7,
+    'Archer'    : 8,
+    'Damas'     : 9
+}
 
-class unit_stats(Enum):
-    lvl = 0
-    str = 1
-    skl = 2
-    spd = 3
-    lcl = 4
-    dfn = 5
-    res = 6
-    con = 7
-    mov = 8
+unit_stats = {
+    'lvl' : 0,
+    'str' : 1,
+    'skl' : 2,
+    'spd' : 3,
+    'lcl' : 4,
+    'dfn' : 5,
+    'res' : 6,
+    'con' : 7,
+    'mov' : 8}
 
-class weapon_stats(Enum):
-    rnk = 0 
-    rng = 1
-    use = 2
-    wgt = 3
-    pwr = 4 
-    hit = 5 
-    crt = 6 
-    cst = 7
+weapon_stats = {
+    'rnk' : 0, 
+    'rng' : 1,
+    'use' : 2,
+    'wgt' : 3,
+    'pwr' : 4, 
+    'hit' : 5, 
+    'crt' : 6, 
+    'cst' : 7}
 
 class Cunit:
-    def __init__(self, unit_id) -> None:
+    def __init__(self, unit_id, start_pos ) -> None:
         with open('data/base_stats.json', 'r') as f:
             self.data = load(f)
 
@@ -48,9 +49,18 @@ class Cunit:
         self.growths    = self.data['unit_stats'][unit_id]['growths']
         self.weapons    = self.data['unit_stats'][unit_id]['weapons']
         self.exp        = 0
-        self.pos        = self.data['unit_stats'][unit_id]['start_pos']
+
+        # Allied units have a unique start position 
+        # If statment is used for setting the start postion of duplicate enemy types
+        # IE there are ten enemies of type fighter(ID:)
+        if(start_pos):
+            self.pos = start_pos
+        else:
+            self.pos        = self.data['unit_stats'][unit_id]['start_pos']
         return
 
+    # alternate constructor for enemy units, as multiple units share base stats
+    # but have different starting position
     def set_pos(self, new_pos):
         self.pos = new_pos
         return
@@ -107,4 +117,8 @@ class Cinventory(Cunit):
     def lose_uses(self):
         pass
 
-# Test functions
+test = Cunit(unit_id_val['Damas'], [1,1])
+test1 = Cunit(unit_id_val['Roy'], False)
+
+test.print_data()
+test1.print_data()

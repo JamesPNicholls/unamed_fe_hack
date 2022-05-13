@@ -65,7 +65,6 @@ class Cmap:
             for y in x:
                 y.print_data()
             print('new row')
-                    
         
 
 class Csquare(Cmap):
