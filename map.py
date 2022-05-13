@@ -59,12 +59,29 @@ class Cmap:
                     data['tile_stats'][self.map_grid[y][x]]['heal_amount'],
                     data['tile_stats'][self.map_grid[y][x]]['traverse_lvl'])    
         
+        self.map_pos = [0,0]
 
     def print_map(self):
         for x in self.map_grid:
             for y in x:
                 y.print_data()
             print('new row')
+
+    def update_map_pos(self, key_press):
+        if key_press == 'up'   :
+            if self.map_pos[1] > 0:
+                self.map_pos[1] -= 1
+
+        if key_press == 'down' :
+            if self.map_pos[1] < y_size-1:
+                self.map_pos[1] += 1
+
+        if key_press == 'left' :
+            if self.map_pos[0] > 0:
+                self.map_pos [0] -= 1
+        if key_press == 'right':
+            if self.map_pos[0] < x_size-1:
+                self.map_pos[0] += 1 
         
 
 class Csquare(Cmap):

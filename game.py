@@ -7,18 +7,29 @@ class Cgame:
     #mask used for color_key transparency
     cursor_mask = (156, 39, 176)
     frame_count = 0
+
+    #pixel granularity for the map grid
     grid_size = 55
         
     def __init__(self,screen):
         self.current_Level = 1
         self.screen = screen
 
+        # Terrain Display Screen
+        self.terrain_disp = p.image.load('sprites/map/terrain_disp.png').convert()
+        self.terrain_disp = p.transform.scale(self.terrain_disp, (210,210))
+        self.terrain_disp.set_colorkey(self.cursor_mask)
+        self.terrain_disp_pos = [650, 380]
+
+        # game map images
         self.game_Map = p.image.load('sprites/map/map_Demo.png').convert()
         self.game_Map = p.transform.scale(self.game_Map, (int(3.5*240),int(3.5*336)))    
         self.game_Map_Pos = [0,0]
+
+        # map object populated with sqaure objects to store the tile data
         self.game_Map_Grid = map.Cmap()
 
-
+        # Cursor images
         self.game_Icon = [p.image.load('sprites/map/map_cursor_0.png').convert(), p.image.load('sprites/map/map_cursor_1.png').convert(), p.image.load('sprites/map/map_cursor_2.png').convert()]
         for i in range(size(self.game_Icon)):
             self.game_Icon[i] = p.transform.scale(self.game_Icon[i], (int(3.6*20), int(3.6*20)))
@@ -36,6 +47,7 @@ class Cgame:
                             'u_lance'   : unit.Cunit(unit.unit_id_val['Lance'],     False),
                             'u_wolt'    : unit.Cunit(unit.unit_id_val['Wolt'],      False),
                             'u_bors'    : unit.Cunit(unit.unit_id_val['Bors'],      False)}
+
         #__init__(self, unit_id, start_pos )
         self.enemies = {    'u_damas'       : unit.Cunit(unit.unit_id_val['Damas'],     [5,5]),
                             'u_brigand_0'   : unit.Cunit(unit.unit_id_val['Brigand'],   [1,1]),
@@ -66,28 +78,37 @@ class Cgame:
             # Update Cursor Position based on Button Press   
             if event.type == p.KEYDOWN:
                 if event.key == p.K_DOWN:
-                    
+                   
                     if self.game_Icon_Pos[1] < 9:
                         self.game_Icon_Pos[1] += 1
+                        self.game_Map_Grid.update_map_pos('down') 
+                        # Need two calls of this for the screen scrolling
+                        # No need for the left and right inputs
                     
                     # Checks to see if the cursor is at the edge of visible screen to scroll the map
-                    # One of these for each direction
+                    # One of these for up and down
                     if self.game_Icon_Pos[1] == 9 and self.game_Map_Pos[1] > -11:
+                        self.game_Map_Grid.update_map_pos('down')
                         self.game_Map_Pos[1] -= 1
 
                 if event.key == p.K_UP:
+                    
                     # move cursor up unless at top of screen
                     if self.game_Icon_Pos[1] > 0:
                         self.game_Icon_Pos[1] -= 1
+                        self.game_Map_Grid.update_map_pos('up')
 
                     if self.game_Icon_Pos[1] == 0 and self.game_Map_Pos[1] < 0:
                         self.game_Map_Pos[1] += 1
+                        self.game_Map_Grid.update_map_pos('up')
                     
                 if event.key == p.K_LEFT:
+                    self.game_Map_Grid.update_map_pos('left')
                     if self.game_Icon_Pos[0] > 0 :
                         self.game_Icon_Pos[0] -= 1
 
                 if event.key == p.K_RIGHT:
+                    self.game_Map_Grid.update_map_pos('right')
                     if self.game_Icon_Pos[0] <= 13:    
                         self.game_Icon_Pos[0] += 1
                     
@@ -100,19 +121,45 @@ class Cgame:
     def get_cursor_pos(self):
         return self.game_Icon_Pos
 
+    def draw_terrain_disp(self):
+        # font
+        my_font = p.font.SysFont('Times New Roman', 30)
+        
+
+        # gets the data to be printed
+        avod = self.game_Map_Grid.map_grid[self.game_Map_Grid.map_pos[1]][self.game_Map_Grid.map_pos[0]].bonus_avd
+        defn = self.game_Map_Grid.map_grid[self.game_Map_Grid.map_pos[1]][self.game_Map_Grid.map_pos[0]].bonus_def
+        name = self.game_Map_Grid.map_grid[self.game_Map_Grid.map_pos[1]][self.game_Map_Grid.map_pos[0]].name
+        print('x: ',self.game_Map_Grid.map_pos[0],' y: ',self.game_Map_Grid.map_pos[1], ' def: ', defn, ', avd: ', avod)
+       
+        # renders the text to be printed
+        defn = my_font.render(str(defn), False, (0xf,0xf,0xf))
+        avod = my_font.render(str(avod), False, (0xf,0xf,0xf))
+        name = my_font.render(name, False, (0x0, 0x0, 0x0))
+
+        # change position of terrain disp to prevent hiding cursor
+        # if self.game_Icon_Pos[0] > map.x_size/2 :
+        #     self.terrain_disp_pos[0] = 50
+        # else
+        #     self.terrain_disp
+
+        # prints images and text
+        self.screen.blit(self.terrain_disp, self.terrain_disp_pos)
+        self.screen.blit( defn, (770,483))
+        self.screen.blit( avod, (770,515))
+        self.screen.blit( name, (715,435))
+        
 
     def draw_Game(self, *args):  
         # Draw Images on screen
+        # Map
         self.screen.blit( self.game_Map, multiply(self.game_Map_Pos, self.grid_size))
-        self.screen.blit( self.game_Icon[1], multiply(self.game_Icon_Pos,self.grid_size))
-        
-        my_font = p.font.SysFont('Times New Roman', 50)
-        defn = self.game_Map_Grid.map_grid[self.game_Icon_Pos[0]][self.game_Icon_Pos[0]].bonus_def
-        avod = self.game_Map_Grid.map_grid[self.game_Icon_Pos[0]][self.game_Icon_Pos[0]].bonus_avd
-        defn = my_font.render(defn, False, (0xff,0xff,0xff))
-        avod = my_font.render(avod, False, (0xff,0xff,0xff))
 
-        self.screen.blit( defn, (10,10))
-        self.screen.blit( avod, [20,20])
+        # Icon
+        self.screen.blit( self.game_Icon[1], multiply(self.game_Icon_Pos,self.grid_size))
+
+        #terrain data
+        self.draw_terrain_disp()
         return
 
+ 

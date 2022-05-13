@@ -22,17 +22,17 @@
     ],
 
     "tile_stats" :[
-        {"id" :  0, "name" : "dash",     "stat_bonus_def" : 0, "stat_bonus_avd": 0,  "heal_amount" : 0, "traverse_lvl" : 0 },
-        {"id" :  1, "name" : "plains",   "stat_bonus_def" : 0, "stat_bonus_avd": 0,  "heal_amount" : 0, "traverse_lvl" : 0 },
-        {"id" :  2, "name" : "forest",   "stat_bonus_def" : 1, "stat_bonus_avd": 20, "heal_amount" : 0, "traverse_lvl" : 0 },
-        {"id" :  3, "name" : "house",    "stat_bonus_def" : 0, "stat_bonus_avd": 0,  "heal_amount" : 0, "traverse_lvl" : 0 },
-        {"id" :  4, "name" : "village",  "stat_bonus_def" : 0, "stat_bonus_avd": 10, "heal_amount" : 0, "traverse_lvl" : 0 },
-        {"id" :  5, "name" : "cliff",    "stat_bonus_def" : 0, "stat_bonus_avd": 0,  "heal_amount" : 0, "traverse_lvl" : 0 },
-        {"id" :  6, "name" : "sea",      "stat_bonus_def" : 0, "stat_bonus_avd": 10, "heal_amount" : 0, "traverse_lvl" : 0 },
-        {"id" :  7, "name" : "ruins",    "stat_bonus_def" : 0, "stat_bonus_avd": 0,  "heal_amount" : 0, "traverse_lvl" : 0 },
-        {"id" :  8, "name" : "mnt",      "stat_bonus_def" : 2, "stat_bonus_avd": 30, "heal_amount" : 0, "traverse_lvl" : 0 },
-        {"id" :  9, "name" : "peak",     "stat_bonus_def" : 2, "stat_bonus_avd": 40, "heal_amount" : 0, "traverse_lvl" : 0 },
-        {"id" : 10, "name" : "gate",     "stat_bonus_def" : 3, "stat_bonus_avd": 20, "heal_amount" : 10, "traverse_lvl" : 0 }
+        {"id" :  0, "name" : "--",     "stat_bonus_def" : 0, "stat_bonus_avd": 0,  "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  1, "name" : "Plains",   "stat_bonus_def" : 0, "stat_bonus_avd": 0,  "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  2, "name" : "Forest",   "stat_bonus_def" : 1, "stat_bonus_avd": 20, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  3, "name" : "House",    "stat_bonus_def" : 0, "stat_bonus_avd": 0,  "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  4, "name" : "Village",  "stat_bonus_def" : 0, "stat_bonus_avd": 10, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  5, "name" : "Cliff",    "stat_bonus_def" : 0, "stat_bonus_avd": 0,  "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  6, "name" : "Sea",      "stat_bonus_def" : 0, "stat_bonus_avd": 10, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  7, "name" : "Ruins",    "stat_bonus_def" : 0, "stat_bonus_avd": 0,  "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  8, "name" : "Mnt.",     "stat_bonus_def" : 2, "stat_bonus_avd": 30, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" :  9, "name" : "Peak",     "stat_bonus_def" : 2, "stat_bonus_avd": 40, "heal_amount" : 0, "traverse_lvl" : 0 },
+        {"id" : 10, "name" : "Gate",     "stat_bonus_def" : 3, "stat_bonus_avd": 20, "heal_amount" : 10, "traverse_lvl" : 0 }
     ]
 }
 
