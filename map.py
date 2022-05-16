@@ -1,5 +1,6 @@
 from json import load
 from enum import Enum
+import pygame as p
 
 x_size = 15
 y_size = 21
@@ -19,6 +20,8 @@ class terrain_type(Enum):
 
 class Cmap:
     # Only used during construction of the map its Csquare children
+    grid_size = 55
+
     map_grid = [
         [0x01, 0x01, 0x01, 0x01, 0x08, 0x08, 0x09, 0x09, 0x09, 0x09, 0x09, 0x09, 0x09, 0x09, 0x09],
         [0x01, 0x01, 0x02, 0x01, 0x01, 0x01, 0x01, 0x01, 0x08, 0x09, 0x09, 0x09, 0x09, 0x09, 0x09],
@@ -44,6 +47,11 @@ class Cmap:
 
 
     def __init__(self) -> None:
+        # game map images
+        self.game_Map = p.image.load('sprites/map/map_Demo.png').convert()
+        self.game_Map = p.transform.scale(self.game_Map, (int(3.5*240),int(3.5*336)))    
+        self.game_Map_Pos = [0,0]
+
         # Open json containing grid data, and temp store it in data
         # 'with' automatically closes when out of scope
         with open('data/base_stats.json', 'r') as f:
@@ -101,6 +109,27 @@ class Csquare(Cmap):
         ,self.heal_amount
         ,self.traverse_amt
         ,self.occupied)
+
+# Objects to be created later
+
+class Cgame_Icon(Cmap):
+    
+    pass
+
+class Cterrain_disp(Cmap):
+    pass
+
+class Cunit_window(Cmap):
+    pass
+
+class Cmini_map(Cmap):
+    pass
+
+class Ccombat_menu(Cmap):
+    pass
+
+class Ccommand_menu(Cmap):
+    pass
 
 # Test functions  
 # map = Cmap()

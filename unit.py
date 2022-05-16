@@ -23,7 +23,7 @@ unit_stats = {
     'str' : 1,
     'skl' : 2,
     'spd' : 3,
-    'lcl' : 4,
+    'lck' : 4,
     'dfn' : 5,
     'res' : 6,
     'con' : 7,
